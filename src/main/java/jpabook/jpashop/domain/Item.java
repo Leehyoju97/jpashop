@@ -13,6 +13,7 @@ import javax.persistence.*;
 public abstract class Item {
 
     @Id @GeneratedValue
+    @Column(name = "item_id")
     private Long id;
 
     private String name;
@@ -29,6 +30,8 @@ public abstract class Item {
         if (restStock < 0) {
             throw new NotEnoughStockException("상품 재고가 부족하다.");
         }
+
+        this.stockQuantity = restStock;
     }
 
 }
