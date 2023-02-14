@@ -34,7 +34,13 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Member findOneMember(Long memberId) {
+    public Member findOne(Long memberId) {
         return memberRepository.findOne(memberId);
+    }
+
+    @Transactional
+    public void update(Long id, String name) {
+        Member member = memberRepository.findOne(id);
+        member.setName(name);
     }
 }
